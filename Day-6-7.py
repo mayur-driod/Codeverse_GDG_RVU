@@ -87,6 +87,26 @@ class Solution(object):
 
 
 # simplify Path
+class Solution(object):
+    def simplifyPath(self, path):
+        """
+        :type path: str
+        :rtype: str
+        """
+        destruct = path.split("/")
+        stk = []
+
+        for i in destruct:
+            if i == "" or i == ".":
+                continue
+            if i == "..":
+                if stk:
+                    stk.pop()
+            else:
+                stk.append(i)
+        return "/"+"/".join(stk)
+
+
 
 
         
