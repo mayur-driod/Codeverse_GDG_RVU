@@ -106,6 +106,31 @@ class Solution(object):
                 stk.append(i)
         return "/"+"/".join(stk)
 
+# Reverse polish notation
+class Solution(object):
+    def evalRPN(self, tokens):
+        """
+        :type tokens: List[str]
+        :rtype: int
+        """
+        stk = []
+
+        for i in tokens:
+            if i == '+':
+                stk.append(stk.pop() + stk.pop())
+            elif i == "-":
+                s, f = stk.pop(), stk.pop()
+                stk.append(f - s)
+            elif i == "*":
+                stk.append(stk.pop() * stk.pop())
+            elif i == "/":
+                s, f = stk.pop(), stk.pop()
+                stk.append(int(float(f) / s))
+            else:
+                stk.append(int(i))
+        return stk[0]
+
+
 
 
 
